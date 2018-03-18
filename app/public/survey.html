@@ -215,14 +215,73 @@
 							
 				};
 
-				console.log(newFriend);
 
 				$.post("/api/friends", newFriend);
-				
-				// {
-				// 	alert("New friend added");
-				// });
+					alert("New friend added");
+
+				console.log(newFriend);
+
+				friendComp();
+
 			});
+
+		var closestFriend = "";
+
+		function friendComp()
+		{
+			var currentURL = window.location.origin;
+
+			$.ajax({url: currentURL + "/api/friends", method: "GET"})
+			.then(function(friends)
+				{
+					console.log("URL: " + currentURL + "/api/friends");
+					console.log(friends);
+					console.log("Friends.length:", friends.length);
+
+					var arrayDiff = 0;
+					var scoreDiff = 100;
+					var lastIn = friends.length-1;
+					console.log("lastIn: ", lastIn);
+
+					for (i=0; i<friends.length; i++)
+					{
+						console.log(friends[i].name, "New: ", friends[lastIn].name);
+						console.log("Closest friend: ", closestFriend);
+						console.log("Score diff: ", scoreDiff);
+						
+						if (friends[i].name = friends[lastIn].name)
+						{
+							i++;
+						}
+						
+						var comp = 0;
+						for (j=0; j<10; j++)
+						{
+							comp = Math.abs(friends[i].scores[j] - friends[lastIn].scores[j]);
+							console.log("comp: ",comp);
+							arrayDiff = arrayDiff+comp*2;
+						}
+
+							console.log("Friend: ", friends[i].name + "New Friend: ", friends[lastIn].name, "Score diff: ",arrayDiff);
+
+							if (arrayDiff<scoreDiff)
+							{
+								scoreDiff = arrayDiff;
+								closestFriend = friends[i].name
+							}
+								arrayDiff = 0;
+								console.log("Closest friend: ", closestFriend);
+
+					}
+
+
+
+								alert("Your closest match is: ", closestFriend);
+
+
+				});
+			
+		}
 
 		
 
