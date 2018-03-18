@@ -195,7 +195,7 @@
 		$("#submit").on("click", function(event)
 			{
 				event.preventDefault();
-				
+
 				var newFriend = 
 				{
 					name: $("#name").val().trim(),
@@ -217,10 +217,11 @@
 
 				console.log(newFriend);
 
-				$.post("/api/friends", newFriend, function(data)
-				{
-					alert("New friend added");
-				});
+				$.post("/api/friends", newFriend);
+				
+				// {
+				// 	alert("New friend added");
+				// });
 			});
 
 		
