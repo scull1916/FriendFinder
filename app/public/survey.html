@@ -192,10 +192,12 @@
 
 	<script type="text/javascript">
 
+		//on the button click, capture user's survey answers
 		$("#submit").on("click", function(event)
 			{
 				event.preventDefault();
 
+				//assign form input to a variable
 				var newFriend = 
 				{
 					name: $("#name").val().trim(),
@@ -215,17 +217,23 @@
 							
 				};
 
-
+				//post the new data so that it will present with the other objects in the friends.js file
 				$.post("/api/friends", newFriend);
-					alert("New friend added");
 
-				console.log(newFriend);
 
+				
+				//call the function which will compare the new object to the other objects in friends.js
 				friendComp();
 
 			});
+		//assign global variables which can be easily accessed to aid in the friend comp process
+		
+		// tempArray will hold the friends.js object for iteration & comparison with new friend object
+		var tempArray = [];
 
-		var closestFriend = "";
+		var comp = 0;
+
+		var count = 0;
 
 		function friendComp()
 		{
@@ -234,49 +242,68 @@
 			$.ajax({url: currentURL + "/api/friends", method: "GET"})
 			.then(function(friends)
 				{
-					console.log("URL: " + currentURL + "/api/friends");
-					console.log(friends);
-					console.log("Friends.length:", friends.length);
-
+					//initialize the variable which will hold the closest friend based on comp
+					var closestFriend = "";
+					
+					//initialize a variable to hold the calculate difference between the new friend and current friends objects
 					var arrayDiff = 0;
+
+					//initialize a variable which will hold the lowest scored difference between the new friend and the current friend; will help determine the closest friend.
 					var scoreDiff = 100;
+
+					//set a variable to hold the most recent friend addition to the array
 					var lastIn = friends.length-1;
-					console.log("lastIn: ", lastIn);
 
-					for (i=0; i<friends.length; i++)
+
+					function holdScores()
 					{
-						console.log(friends[i].name, "New: ", friends[lastIn].name);
-						console.log("Closest friend: ", closestFriend);
-						console.log("Score diff: ", scoreDiff);
-						
-						if (friends[i].name = friends[lastIn].name)
-						{
-							i++;
-						}
-						
-						var comp = 0;
-						for (j=0; j<10; j++)
-						{
-							comp = Math.abs(friends[i].scores[j] - friends[lastIn].scores[j]);
-							console.log("comp: ",comp);
-							arrayDiff = arrayDiff+comp*2;
-						}
+						//assign the current friends scores to a temp array for comparison
+						tempArray = friends[count].scores;
+						console.log("holdScores-tempArray: " + tempArray);
 
-							console.log("Friend: ", friends[i].name + "New Friend: ", friends[lastIn].name, "Score diff: ",arrayDiff);
 
+						//compare the scores of the current friend to the scores of the new friend
+						for (i=0; i<friends.length; i++)
+						{
+							
+							comp = Math.abs(tempArray.scores[i] - friends[lastIn].scores[i]);
+							console.log("comp: " + comp);
+							
+							//calculate and save the total array difference at each iteration through the scores arrays
+							arrayDiff = arrayDiff+comp;
+							console.log("arrayDiff: " + arrayDiff);
+							
+							//compare arrayDiff with scoreDiff, the lower score is assigned to scoreDiff
 							if (arrayDiff<scoreDiff)
 							{
 								scoreDiff = arrayDiff;
-								closestFriend = friends[i].name
-							}
-								arrayDiff = 0;
-								console.log("Closest friend: ", closestFriend);
 
+								//assign closestFriend based on the scoreDiff between current and new friend
+								closestFriend = friends[count].name;
+								
+							}
+
+							
+						}
+
+						//call the compScores function to iterate to the next friend for comparison to the new friend
+						compScores();
 					}
 
+					//this function will determine if more friends need to be compared to the new friend and when to know there are no more friends to compare with
+					function compScores()
+					{
+						
+						if(count<friends.length)
+							{
+								count++;
+								holdScores();
+							}
 
-
-								alert("Your closest match is: ", closestFriend);
+					}
+	
+					//once the comparison is complete, post the message announcing the closest friend
+					alert("Your closest match is: " + closestFriend);
 
 
 				});
