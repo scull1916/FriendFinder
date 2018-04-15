@@ -101,6 +101,40 @@ var friendsArray =
 			3,
 			3
 		]
+	},
+	{
+		"name":"Princess Mononoke",
+		"photo":"https://jadebate.files.wordpress.com/2014/09/princess_mononoke_60297-1600x1200.jpg",
+		"scores":
+		[
+			1,
+			1,
+			4,
+			1,
+			4,
+			3,
+			3,
+			4,
+			3,
+			1
+		]
+	},
+	{
+		"name":"Homer Simpson",
+		"photo":"http://madbetty.com/wp-content/uploads/2013/11/homer-simpson.jpg",
+		"scores":
+		[
+			5,
+			5,
+			2,
+			5,
+			2,
+			3,
+			5,
+			2,
+			2,
+			5
+		]
 	}
 
 ];

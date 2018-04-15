@@ -40,7 +40,7 @@
 				  	<h3><strong>Question 1</strong></h3>
 				  	<h5>A week in Las Vegas is my idea of a great vacation.</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q1">
+				    <select class="form-control col-sm-2 survey-answer" id="q1">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -53,7 +53,7 @@
 				  	<h3><strong>Question 2</strong></h3>
 				  	<h5>A fried egg on top of a hamburger is a brilliant idea.</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q2">
+				    <select class="form-control col-sm-2 survey-answer" id="q2">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -66,7 +66,7 @@
 				  	<h3><strong>Question 3</strong></h3>
 				  	<h5>There are few better ways to spend a day than a hike in the woods.</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q3">
+				    <select class="form-control col-sm-2 survey-answer" id="q3">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -79,7 +79,7 @@
 				  	<h3><strong>Question 4</strong></h3>
 				  	<h5>I like loud, raucous parties.</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q4">
+				    <select class="form-control col-sm-2 survey-answer" id="q4">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -92,7 +92,7 @@
 				  	<h3><strong>Question 5</strong></h3>
 				  	<h5>I'm always looking for something new to learn.</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q5">
+				    <select class="form-control col-sm-2 survey-answer" id="q5">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -105,7 +105,7 @@
 				  	<h3><strong>Question 6</strong></h3>
 				  	<h5>I prefer to hit the mountains to ski.</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q6">
+				    <select class="form-control col-sm-2 survey-answer" id="q6">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -118,7 +118,7 @@
 				  	<h3><strong>Question 7</strong></h3>
 				  	<h5>Sun, sand, waves - ah, the beach life!</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q7">
+				    <select class="form-control col-sm-2 survey-answer" id="q7">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -131,7 +131,7 @@
 				  	<h3><strong>Question 8</strong></h3>
 				  	<h5>I believe firmly in keeping up on the news.</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q8">
+				    <select class="form-control col-sm-2 survey-answer" id="q8">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -144,7 +144,7 @@
 				  	<h3><strong>Question 9</strong></h3>
 				  	<h5>All you really need to know is the location of the library.</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q9">
+				    <select class="form-control col-sm-2 survey-answer" id="q9">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -157,7 +157,7 @@
 				  	<h3><strong>Question 10</strong></h3>
 				  	<h5>Chocolate dark, coffee black, and beer hoppy.</h5>
 				    <label for="exampleFormControlSelect2">Select an option</label>
-				    <select class="form-control col-sm-2" id="q10">
+				    <select class="form-control col-sm-2 survey-answer" id="q10">
 				      <option value="1">1 (Strongly Disagree)</option>
 				      <option value="2">2</option>
 				      <option value="3">3</option>
@@ -169,7 +169,7 @@
 			    <br>
 
 			    <!-- Submit Button -->
-			    <button type="submit" class="btn btn-primary btn-lg" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+			    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newFriendModal" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
 			     Submit</button>
 
 			    <hr>
@@ -185,135 +185,73 @@
 				</p>
 			</footer>
 		</div>
-		
 
-
-	</body>
+		<!-- Display New Friend -->
+		<div class="modal" tabindex="-1" role="dialog" id="newFriendModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3 class="modal-title">Your New Best Matched Friend:</h3>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<h2 id="newFriendName"></h2>
+						<img id="newFriendImage" src="" alt="" width="300">
+					</div>
+<!-- 					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismss="modal">Close</button>
+						<p>TA-DA!</p>
+					</div> -->
+				</div>
+			</div>
+		</div>
+				
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
 	<script type="text/javascript">
-
 		//on the button click, capture user's survey answers
 		$("#submit").on("click", function(event)
 			{
 				event.preventDefault();
 
+				var surveyAnswers = [];
+				$(".survey-answer option:selected").each(function()
+					{
+						surveyAnswers.push(parseInt($(this).val()));
+						console.log(surveyAnswers);
+					});
+
 				//assign form input to a variable
-				var newFriend = 
-				{
-					name: $("#name").val().trim(),
-					photo: $("#photo").val().trim(),
-					scores: [
-								$("#q1").val().trim(),
-								$("#q2").val().trim(),
-								$("#q3").val().trim(),
-								$("#q4").val().trim(),
-								$("#q5").val().trim(),
-								$("#q6").val().trim(),
-								$("#q7").val().trim(),
-								$("#q8").val().trim(),
-								$("#q9").val().trim(),
-								$("#q10").val().trim()
-							]
-							
+				var newFriend = {
+					name: $("#name").val(),
+					photo: $("#photo").val(),
+					scores: surveyAnswers
 				};
+				console.log(newFriend);
 
 				//post the new data so that it will present with the other objects in the friends.js file
-				$.post("/api/friends", newFriend);
-
-
-				
-				//call the function which will compare the new object to the other objects in friends.js
-				friendComp();
-
-			});
-		//assign global variables which can be easily accessed to aid in the friend comp process
-		
-		// tempArray will hold the friends.js object for iteration & comparison with new friend object
-		var tempArray = [];
-
-		var comp = 0;
-
-		var count = 0;
-
-		function friendComp()
-		{
-			var currentURL = window.location.origin;
-
-			$.ajax({url: currentURL + "/api/friends", method: "GET"})
-			.then(function(friends)
-				{
-					//initialize the variable which will hold the closest friend based on comp
-					var closestFriend = "";
-					
-					//initialize a variable to hold the calculate difference between the new friend and current friends objects
-					var arrayDiff = 0;
-
-					//initialize a variable which will hold the lowest scored difference between the new friend and the current friend; will help determine the closest friend.
-					var scoreDiff = 100;
-
-					//set a variable to hold the most recent friend addition to the array
-					var lastIn = friends.length-1;
-
-
-					function holdScores()
+				$.post("/api/friends", newFriend).done(
+					function(data)
 					{
-						//assign the current friends scores to a temp array for comparison
-						tempArray = friends[count].scores;
-						console.log("holdScores-tempArray: " + tempArray);
-
-
-						//compare the scores of the current friend to the scores of the new friend
-						for (i=0; i<friends.length; i++)
-						{
-							
-							comp = Math.abs(tempArray.scores[i] - friends[lastIn].scores[i]);
-							console.log("comp: " + comp);
-							
-							//calculate and save the total array difference at each iteration through the scores arrays
-							arrayDiff = arrayDiff+comp;
-							console.log("arrayDiff: " + arrayDiff);
-							
-							//compare arrayDiff with scoreDiff, the lower score is assigned to scoreDiff
-							if (arrayDiff<scoreDiff)
-							{
-								scoreDiff = arrayDiff;
-
-								//assign closestFriend based on the scoreDiff between current and new friend
-								closestFriend = friends[count].name;
-								
-							}
-
-							
-						}
-
-						//call the compScores function to iterate to the next friend for comparison to the new friend
-						compScores();
-					}
-
-					//this function will determine if more friends need to be compared to the new friend and when to know there are no more friends to compare with
-					function compScores()
-					{
+						console.log(data);
+						$("#newFriendName").text(data.name);
+						console.log(data.name);
 						
-						if(count<friends.length)
-							{
-								count++;
-								holdScores();
-							}
+						$("#newFriendImage").attr("src", data.photo);
+						console.log(data.photo);
+						
 
-					}
-	
-					//once the comparison is complete, post the message announcing the closest friend
-					alert("Your closest match is: " + closestFriend);
+						//Display the modal containing new best matched friend
+						$("#newFriendModal").modal('show');
 
-
-				});
-			
-		}
-
-		
-
+					});
+			});	
 	</script>
-
-
-
+	</body>
 </html>
+
+
